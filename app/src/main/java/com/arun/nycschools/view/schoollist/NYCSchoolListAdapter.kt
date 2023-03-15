@@ -8,12 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arun.nycschools.databinding.ListItemLayoutBinding
 import com.arun.nycschools.model.data.School
 
+/**
+ * [NYCSchoolListAdapter] is an adapter class used by recycler view in [NYCSchoolListFragment]
+ *
+ * @param onItemClicked is a function type which will be passed as a
+ * lambda from [NYCSchoolListFragment]
+ * */
 class NYCSchoolListAdapter(private val onItemClicked: (School) -> Unit): ListAdapter<School, NYCSchoolListAdapter.WeatherViewHolder>(
     DiffUtil
 ) {
 
     inner class WeatherViewHolder(private var binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: School, index: Int) {
+        fun bind(data: School) {
             with(binding) {
                 binding.tvSchoolName.text = data.school_name
                 listItem.setOnClickListener { onItemClicked(data) }
@@ -31,7 +37,7 @@ class NYCSchoolListAdapter(private val onItemClicked: (School) -> Unit): ListAda
     }
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-        holder.bind(getItem(position), position)
+        holder.bind(getItem(position))
     }
 
     companion object {

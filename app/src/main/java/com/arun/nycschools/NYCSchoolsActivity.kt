@@ -8,6 +8,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.arun.nycschools.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * [NYCSchoolsActivity] Launcher Activity which is responsible for setting up the Navigation
+ * Fragment and Navigation Controller
+ * */
 @AndroidEntryPoint
 class NYCSchoolsActivity : AppCompatActivity() {
 

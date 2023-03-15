@@ -7,7 +7,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 import javax.inject.Singleton
-
+/**
+ * [NYCSchoolApiService] class is responsible for utilizing retrofit apis to obtain data from
+ * the backend
+ * */
 @Singleton
 class NYCSchoolApiService {
 
@@ -18,10 +21,20 @@ class NYCSchoolApiService {
         .addConverterFactory(GsonConverterFactory.create())
         .build().create(NYCSchoolApi::class.java)
 
+    /**
+     * [getSchoolList] method that calls [NYCSchoolApi] retrofit interface function and
+     *
+     * @return listOf ( [School] ) list of School objects
+     * */
     suspend fun getSchoolList(): List<School> {
         return api.getSchools()
     }
 
+    /**
+     * [getSchoolMarks] method that calls [NYCSchoolApi] retrofit interface function
+     *
+     * @return listOf ( [SchoolMarks] ) list of SchoolMarks objects
+     * */
     suspend fun getSchoolMarks(dbn: String): List<SchoolMarks> {
         return api.getSchoolMarks(dbn)
     }

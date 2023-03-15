@@ -11,6 +11,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+/**
+ *  [SatMarksViewModel] is responsible for interacting with repository and providing data to
+ *  [SchoolDetailFragment][com.arun.nycschools.view.schooldetail.SchoolDetailFragment]
+ *  @param repo Repository Interface which will be bound at runtime
+ * */
 @HiltViewModel
 class SatMarksViewModel @Inject constructor(private val repo: NYCSchoolRepo) : ViewModel() {
 
@@ -29,6 +35,12 @@ class SatMarksViewModel @Inject constructor(private val repo: NYCSchoolRepo) : V
     )
     val schoolMarks: StateFlow<SchoolMarks> = _schoolMarks
 
+    /**
+     * [getAverageSatMarks] method is responsible for obtaining SAT marks for a specific school
+     * from backend and assigning it to the [_schoolMarks] flow
+     *
+     * @param dbn - DBN of the school to which we are obtaining the marks
+     * */
     fun getAverageSatMarks(dbn: String) {
         if(schoolMarks.value.dbn == "") {
             _uiState.value = UiState(

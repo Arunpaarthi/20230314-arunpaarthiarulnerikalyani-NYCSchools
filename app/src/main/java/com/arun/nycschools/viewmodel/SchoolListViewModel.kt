@@ -11,6 +11,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ *  [SchoolListViewModel] is responsible for interacting with repository and providing data to
+ *  [NYCSchoolListFragment][com.arun.nycschools.view.schoollist.NYCSchoolListFragment]
+ *  @param repo Repository Interface which will be bound at runtime
+ * */
 @HiltViewModel
 class SchoolListViewModel @Inject constructor(private var repo: NYCSchoolRepo): ViewModel() {
 
@@ -20,6 +25,10 @@ class SchoolListViewModel @Inject constructor(private var repo: NYCSchoolRepo): 
     private var _schools = MutableStateFlow<List<School>>(emptyList())
     val schools: StateFlow<List<School>> = _schools
 
+    /**
+     * [getSchools] function is responsible for initiating the backend Api call to obtain
+     * list of Schools
+     * */
     fun getSchools() {
         if (schools.value.isEmpty()) {
             _uiState.value = UiState(

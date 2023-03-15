@@ -11,13 +11,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.navGraphViewModels
 import com.arun.nycschools.R
 import com.arun.nycschools.databinding.FragmentSchoolDetailBinding
 import com.arun.nycschools.viewmodel.SatMarksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ *  Fragment [SchoolDetailFragment]  class responsible for Handling SatMarks Details Page
+ * */
 @AndroidEntryPoint
 class SchoolDetailFragment : Fragment() {
 
@@ -48,6 +50,10 @@ class SchoolDetailFragment : Fragment() {
         startDetail()
     }
 
+    /**
+     * [startDetail] method is responsible for initiating the flow collection from
+     * [SatMarksViewModel]
+     * */
     private fun startDetail() {
         handleError()
         initiateLoading()
@@ -69,6 +75,9 @@ class SchoolDetailFragment : Fragment() {
         }
     }
 
+    /**
+     * [handleError] method collects uiState Flow and handles displaying error layout
+     * */
     private fun handleError() {
         lifecycleScope.launch {
             viewModel.uiState.collect {
@@ -77,6 +86,9 @@ class SchoolDetailFragment : Fragment() {
         }
     }
 
+    /**
+     * [initiateLoading] method collects uiState Flow and handles loading layout
+     * */
     private fun initiateLoading() {
         lifecycleScope.launch {
             viewModel.uiState.collect {

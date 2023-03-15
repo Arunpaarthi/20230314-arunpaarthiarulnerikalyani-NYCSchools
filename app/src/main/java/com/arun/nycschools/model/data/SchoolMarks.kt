@@ -1,5 +1,8 @@
 package com.arun.nycschools.model.data
 
+/**
+ * [SchoolMarks] data class is just to hold the School Marks Data
+ * */
 data class SchoolMarks(
     val dbn: String,
     val num_of_sat_test_takers: String,

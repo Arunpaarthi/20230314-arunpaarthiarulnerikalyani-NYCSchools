@@ -1,6 +1,7 @@
 package com.arun.nycschools.view.schoollist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,9 @@ import com.arun.nycschools.viewmodel.SchoolListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ *  Fragment [NYCSchoolListFragment]  class responsible for displaying the list of NYC Schools
+ * */
 @AndroidEntryPoint
 class NYCSchoolListFragment : Fragment() {
 
@@ -68,6 +72,10 @@ class NYCSchoolListFragment : Fragment() {
         viewModel.getSchools()
     }
 
+    /**
+     * [startList] method is responsible for initiating the flow collection from
+     * [SchoolListViewModel]
+     * */
     private fun startList() {
         handleError()
         initiateLoading()
@@ -76,6 +84,7 @@ class NYCSchoolListFragment : Fragment() {
                 launch {
                     viewModel.schools.collect { schools ->
                         if (schools.isNotEmpty()) {
+                            Log.d(TAG, "List Size - ${schools.size}")
                             adapter.submitList(schools)
                         }
                     }
@@ -84,6 +93,9 @@ class NYCSchoolListFragment : Fragment() {
         }
     }
 
+    /**
+     * [handleError] method collects uiState Flow and handles displaying error layout
+     * */
     private fun handleError() {
         lifecycleScope.launch {
             viewModel.uiState.collect {
@@ -92,6 +104,9 @@ class NYCSchoolListFragment : Fragment() {
         }
     }
 
+    /**
+     * [initiateLoading] method collects uiState Flow and handles loading layout
+     * */
     private fun initiateLoading() {
         lifecycleScope.launch {
             viewModel.uiState.collect {
