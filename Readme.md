@@ -9,6 +9,7 @@ their SAT marks. The App follow MVVM architecture and modern Android development
 ## Tools and Libraries
 - Androidx Navigation
 - Androidx Lifecycle
+- View Binding
 - Retrofit
 - Junit
 - HILT
