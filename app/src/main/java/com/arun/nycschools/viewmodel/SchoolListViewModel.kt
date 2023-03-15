@@ -21,23 +21,25 @@ class SchoolListViewModel @Inject constructor(private var repo: NYCSchoolRepo): 
     val schools: StateFlow<List<School>> = _schools
 
     fun getSchools() {
-        _uiState.value = UiState(
-            isLoading = true,
-            isError = false
-        )
-        viewModelScope.launch {
-            repo.getSchools().collect {
-                _schools.value = it
-                if(schools.value.isNotEmpty()) {
-                    _uiState.value = UiState(
-                        isLoading = false,
-                        isError = false
-                    )
-                } else {
-                    _uiState.value = UiState(
-                        isLoading = false,
-                        isError = true
-                    )
+        if (schools.value.isEmpty()) {
+            _uiState.value = UiState(
+                isLoading = true,
+                isError = false
+            )
+            viewModelScope.launch {
+                repo.getSchools().collect {
+                    _schools.value = it
+                    if (schools.value.isNotEmpty()) {
+                        _uiState.value = UiState(
+                            isLoading = false,
+                            isError = false
+                        )
+                    } else {
+                        _uiState.value = UiState(
+                            isLoading = false,
+                            isError = true
+                        )
+                    }
                 }
             }
         }

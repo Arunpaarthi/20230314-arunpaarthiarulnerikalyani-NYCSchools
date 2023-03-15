@@ -34,24 +34,26 @@ class SatMarksViewModel @Inject constructor(private val repo: NYCSchoolRepo) : V
     val schoolMarks: StateFlow<SchoolMarks> = _schoolMarks
 
     fun getAverageSatMarks(dbn: String) {
-        _uiState.value = UiState(
-            isLoading = true,
-            isError = false
-        )
-        viewModelScope.launch {
-            repo.getSatMarks(dbn).collect {
-                val list = it
-                if (list.isNotEmpty()) {
-                    _schoolMarks.value = list[0]
-                    _uiState.value = UiState(
-                        isLoading = false,
-                        isError = false
-                    )
-                } else {
-                    _uiState.value = UiState(
-                        isLoading = false,
-                        isError = true
-                    )
+        if(schoolMarks.value.dbn == "") {
+            _uiState.value = UiState(
+                isLoading = true,
+                isError = false
+            )
+            viewModelScope.launch {
+                repo.getSatMarks(dbn).collect {
+                    val list = it
+                    if (list.isNotEmpty()) {
+                        _schoolMarks.value = list[0]
+                        _uiState.value = UiState(
+                            isLoading = false,
+                            isError = false
+                        )
+                    } else {
+                        _uiState.value = UiState(
+                            isLoading = false,
+                            isError = true
+                        )
+                    }
                 }
             }
         }
