@@ -1,17 +1,13 @@
 package com.arun.nycschools.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.arun.nycschools.model.UiState
 import com.arun.nycschools.model.data.SchoolMarks
-import com.arun.nycschools.model.network.NYCSchoolApiService
 import com.arun.nycschools.model.repository.NYCSchoolRepo
-import com.arun.nycschools.model.repository.NYCSchoolRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
