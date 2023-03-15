@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
+    id 'kotlin-android'
+}
+
+android {
+    namespace 'com.arun.nycschools'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.arun.nycschools"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$kotlin"
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navFrag"
+    implementation "androidx.legacy:legacy-support-v4:$legacy"
+    implementation "androidx.navigation:navigation-ui-ktx:$navFrag"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3"
+    implementation "androidx.test:core-ktx:$androidxTest"
+
+    // Hilt dependencies
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation "androidx.hilt:hilt-navigation-fragment:$hilt_jetpack"
+
+    testImplementation "junit:junit:$junit"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$ktx_test"
+    androidTestImplementation "androidx.test.ext:junit:$androidxTest"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    testImplementation "org.mockito:mockito-core:$mockito"
+    testImplementation "org.mockito:mockito-inline:$mockito_inline"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockito_kotlin"
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
+}

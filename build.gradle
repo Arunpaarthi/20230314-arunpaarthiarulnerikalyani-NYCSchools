@@ -1,0 +1,30 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '7.4.1' apply false
+    id 'com.android.library' version '7.4.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
+    id 'androidx.navigation.safeargs.kotlin' version '2.5.3' apply false
+    id 'com.google.dagger.hilt.android' version '2.44' apply false
+}
+
+ext {
+    navFrag = '2.5.3'
+    lifecycle = '2.5.1'
+    constraintLayout = '2.1.4'
+    material = '1.8.0'
+    kotlin = '1.7.0'
+    appcompat = '1.6.1'
+    retrofit = '2.9.0'
+    junit = '4.13.2'
+    androidxTest = '1.1.5'
+    espresso = '3.5.1'
+    legacy = '1.0.0'
+    okhttp3 = '5.0.0-alpha.11'
+    androidxTest = '1.5.0'
+    ktx_test = '1.6.4'
+    hilt_version = '2.44'
+    hilt_jetpack = '1.0.0'
+    mockito = '5.1.1'
+    mockito_inline= '4.0.0'
+    mockito_kotlin = '4.0.0'
+}

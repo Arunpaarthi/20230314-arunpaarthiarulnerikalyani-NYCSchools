@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/NYCSchoolListFragment">
+
+    <fragment
+        android:id="@+id/NYCSchoolListFragment"
+        android:name="com.arun.nycschools.view.schoollist.NYCSchoolListFragment"
+        android:label="NYCSchoolListFragment" >
+        <action
+            android:id="@+id/action_NYCSchoolListFragment_to_schoolDetailFragment"
+            app:destination="@id/schoolDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/schoolDetailFragment"
+        android:name="com.arun.nycschools.view.schooldetail.SchoolDetailFragment"
+        android:label="SchoolDetailFragment" >
+        <argument
+            android:name="dbn"
+            app:argType="string" />
+        <argument
+            android:name="school_name"
+            app:argType="string" />
+    </fragment>
+</navigation>

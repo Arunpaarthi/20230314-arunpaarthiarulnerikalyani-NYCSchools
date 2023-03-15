@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">20230314-arunpaarthiarulnerikalyani-NYCSchools</string>
+    <string name="nyc_school_title">NYC Schools</string>
+    <string name="avg_test_takers">Average Test Takers: %s</string>
+    <string name="avg_math_score">Average Math Score: %s</string>
+    <string name="avg_reading_score">Average Reading Score: %s</string>
+    <string name="avg_writing_score">Average Writing Score: %s</string>
+    <string name="no_data">No Data received from the server!!!</string>
+</resources>
