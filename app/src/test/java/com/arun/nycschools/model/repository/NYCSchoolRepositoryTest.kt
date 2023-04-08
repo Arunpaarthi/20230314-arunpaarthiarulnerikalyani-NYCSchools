@@ -27,13 +27,15 @@ class NYCSchoolRepositoryTest {
     private lateinit var repo: NYCSchoolRepo
     private lateinit var excepRepo: NYCSchoolRepo
 
-    var apiService =  NYCSchoolApiService()
+
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
     @Mock
     lateinit var apiExcep: NYCSchoolApiService
+    @Mock
+    lateinit var apiService:  NYCSchoolApiService
 
     @Before
     fun setUp() {
@@ -44,6 +46,14 @@ class NYCSchoolRepositoryTest {
 
     @Test
     fun getSchools_Online() = runTest {
+        Mockito.`when`(apiService.getSchoolList()).thenAnswer {
+            listOf(
+                School(
+                    dbn = "1243",
+                    school_name = "Test School"
+                )
+            )
+        }
         assertEquals(true, repo.getSchools().first().isNotEmpty())
     }
 
